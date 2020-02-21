@@ -1,0 +1,151 @@
+\documentclass[11pt,a4paper,spanish]{mibook}
+\usepackage[a4paper,left=3cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{natbib}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{scalerel}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable} % para tablas largas
+
+%paquetes extras
+\usepackage{subfigure}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subfigure}
+\usepackage{changepage}   % for the adjustwidth environment
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{trees}
+\usetikzlibrary{automata}
+\usetikzlibrary{positioning}
+\usetikzlibrary{graphs}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.symbols}
+\usepackage{url} 
+\usepackage[colorlinks=true,linkcolor=black,citecolor = black, urlcolor = blue]{hyperref}
+\usepackage{minted}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{breakcites}
+\usepackage{float}
+\usepackage{stackrel}
+\usepackage{color}
+\usepackage[textsize=small, textwidth=2cm, spanish, colorinlistoftodos, 
+backgroundcolor=blue!20, 
+bordercolor=blue]{todonotes}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
+\renewcommand{\algorithmicensure}{\textbf{Salida:}}
+\renewcommand{\algorithmicif}{\textbf{si}}
+\renewcommand{\algorithmicthen}{\textbf{entonces}}
+\renewcommand{\algorithmicelse}{\textbf{sino}}
+\renewcommand{\algorithmicend}{\textbf{fin}}
+\renewcommand{\algorithmicforall}{\textbf{para cada}}
+\renewcommand{\algorithmicfor}{\textbf{para}}
+\renewcommand{\algorithmicdo}{\textbf{hacer}}
+\renewcommand{\algorithmicand}{\textbf{y}}
+\renewcommand{\algorithmicor}{\textbf{o}}
+\renewcommand{\algorithmicwhile}{\textbf{mientras}}
+\definecolor{softred}{rgb}{1.0, 0.44, 0.37}
+\usepackage{caption}
+\DeclareCaptionFormat{algor}{%
+	\hrulefill\par\offinterlineskip\vskip1pt%
+	\textbf{#1#2}#3\offinterlineskip\hrulefill}
+\DeclareCaptionStyle{algori}{singlelinecheck=off,format=algor,labelsep=space}
+\captionsetup[algorithm]{style=algori}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newtheorem{definition}{{\bf Definición }}[section]
+\newtheorem{theorem}{\bf Teorema}[section]
+\newtheorem{property}{\bf Propiedad}[section]
+%  Definición de Palabras Clave
+\def\palabras{ 
+	\mbox{{\boldmath $Palabras\;Clave$}{\bf: }}}
+%\emph{Palabras Clave}
+\def\endpalabras{\medskip\rm
+}
+\hyphenation{Co-ma-hue}
+\hyphenation{Par-ti-cu-lar-men-te}
+\hyphenation{me-ca-nis-mos}
+\hyphenation{pro-ble-mas}
+\hyphenation{in-te-rac-tuar re-pre-sen-ta-cion}
+\hyphenation{do-mi-nios ra-zo-na-dor de-sa-rro-lla}
+
+\begin{document}
+
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{Indice de tablas}
+
+%Empieza la numeracion en nmeros romanos
+\frontmatter
+% Incluimos la cartula
+\input{caratula}
+
+
+
+% Incluimos la pgina de prefacio.
+%%\input{prefacio}
+
+% Incluimos la pgina de dedicatorias. Esta pgina es opcional.
+% Si la pgina no quiere ser incluida anteponga el smbolo "%" al comienzo de la siguiente lnea
+%%\input{dedicatoria}
+
+
+% Incluimos la pgina de agradecimientos. Esta pgina es opcional.
+% Si la pgina no quiere ser incluida anteponga el smbolo "%" al comienzo de la siguiente lnea
+%%\input{agradecimiento}
+
+% Incluimos la pgina de resumen
+%%\input{resumen}
+
+% Incluimos la pgina de resumen en ingls
+%%\input{abstract}
+
+% Tabla de contenido o Indice del contenido
+\tableofcontents{}
+
+% Lista de figuras o Indice de figuras
+%\listoffigures
+
+% Lista de tablas o Indice de Tablas
+%\listoftables
+
+%Empieza la numeracin en nmeros arbigos
+\mainmatter
+\input{capitulos/introduccion}
+\input{capitulos/antecedentes}
+\input{capitulos/diseno}
+\input{capitulos/implementacion}
+\input{capitulos/resultados}
+\input{capitulos/trabajos_relacionados}
+\input{capitulos/conclusion}
+
+\vfill
+\pagebreak
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{plain}
+
+\bibliography{bibliography}
+
+
+
+
+
+
+\end{document}

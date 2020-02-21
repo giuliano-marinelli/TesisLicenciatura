@@ -1,0 +1,298 @@
+\chapter{Resultados Experimentales}\label{cap5}
+A fin de evaluar empíricamente los algoritmos implementados se han analizado sus comportamientos sobre grafos representados como diagramas de arcos, que fueron generados aleatoriamente. Se utilizó el ``número de nodos" como semilla para la generación aleatoria. Los arcos fueron generados aleatoriamente tanto en la posición de la curva sobre o por debajo del semiplano, como en los nodos que conectan, por lo que para una misma semilla (número de nodos) puede haber una cantidad variable de arcos que conectan diferentes nodos. 
+
+En cada prueba se generaron 100 grafos para cada semilla, es decir 100 grafos aleatorios para cada número de nodos. Los resultados muestran los promedios de arcos generados, de tiempos y ciclos invertidos (para el caso del algoritmo genético) y de valores de crossing number inicial y final para cada semilla. 
+
+En las pruebas mencionadas se utilizaron los mismos grafos aleatorios, es decir que sobre cada grafo original se aplicaron los algoritmos en diferentes ordenes y sucesiones de unos y otros, y de esta manera se pudo comparar el rendimiento de cada uno con respecto a los demás, como se muestra en la sección \ref{sec:resultados_finales}.
+
+Estos resultados fueron obtenidos ejecutando un lote de pruebas sobre una computadora con procesador Intel Core i7-8650 de 2.11GHz, con una memoria RAM de 16GB y bajo un sistema operativo Windows 10 x64.
+
+\section{Resultados de Algoritmo de Grafos Completos}
+Esta prueba fue realizada a partir de aplicar el algoritmo para grafos completos, explicado en los capítulos anteriores, sobre un grafo original representado como diagrama de arcos que fue generado aleatoriamente como se explicó en la sección previa. En la Tabla \ref{tab:resultados_orig_alg_com} pueden verse los promedios de tiempos de ejecución y de los crossing number resultantes comparados con los de los grafos originales para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo para grafos completos sobre los grafos originales aleatorios.}
+	\label{tab:resultados_orig_alg_com}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{4}{c|}{\textbf{Promedios}} \\
+		\cline{2-5}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{CN Grafo Orig.} & \textbf{CN Grafo Final} \\
+		\hline
+		10 & 12 & 0.000 s. & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\section{Resultados de Algoritmo ArcGen}
+En estas pruebas se evalúan los resultados de aplicar el algoritmo genético ArcGen, explicado en los capítulos anteriores, sobre diferentes grafos de entrada.
+
+\subsection{Resultados sobre Grafo Original}
+Esta prueba aplica el algoritmo genético ArcGen sobre el grafo original generado aleatoriamente. En la Tabla \ref{tab:resultados_orig_alg_gen} pueden verse los promedios de tiempos de ejecución, de las cantidades de ciclos y de los crossing number resultantes comparados con los de los grafos originales para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo genético ArcGen sobre los grafos originales aleatorios.}
+	\label{tab:resultados_orig_alg_gen}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{5}{c|}{\textbf{Promedios}} \\
+		\cline{2-6}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{Ciclos} & \textbf{CN G. Orig.} & \textbf{CN G. Final} \\
+		\hline
+		10 & 12 & 0.000 s. & & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Resultados sobre Grafo Preprocesado por Algoritmo de Grafos Completos}
+Esta prueba aplica el algoritmo genético ArcGen sobre el grafo original (generado aleatoriamente), luego de ser preprocesado por el algoritmo para grafos completos. En la Tabla \ref{tab:resultados_com_alg_gen} pueden verse los promedios de tiempos de ejecución, de las cantidades de ciclos y de los crossing number resultantes comparados con los de los grafos preprocesados para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo genético ArcGen sobre los grafos originales aleatorios preprocesados por el algoritmo para grafos completos.}
+	\label{tab:resultados_com_alg_gen}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{5}{c|}{\textbf{Promedios}} \\
+		\cline{2-6}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{Ciclos} & \textbf{CN G. Prep.} & \textbf{CN G. Final} \\
+		\hline
+		10 & 12 & 0.000 s. & & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+Dados los resultados de las tablas \ref{tab:resultados_orig_alg_gen} y \ref{tab:resultados_com_alg_gen} encontramos que el algoritmo ArcGen aplicado sobre el grafo preprocesado logra alcanzar un máximo local mucho más rápido que al aplicarse sobre el grafo original, como también logra que el máximo alcanzado sea mas óptimo.
+
+\section{Resultados de Algoritmo de Fuerzas}
+En estas pruebas se evalúan los resultados de aplicar el algoritmo dirigido por fuerzas de Tunkelang, sobre diferentes grafos de entrada.
+
+\subsection{Resultados sobre Grafo Original}
+Esta prueba aplica el algoritmo dirigido por fuerzas de Tunkelang sobre el grafo original generado aleatoriamente. En la Tabla \ref{tab:resultados_orig_alg_fue} pueden verse los promedios de tiempos de ejecución y de los crossing number resultantes comparados con los de los grafos originales para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo dirigido por fuerzas de Tunkelang sobre los grafos originales aleatorios.}
+	\label{tab:resultados_orig_alg_fue}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{4}{c|}{\textbf{Promedios}} \\
+		\cline{2-5}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{CN Grafo Orig.} & \textbf{CN Grafo Final} \\
+		\hline
+		10 & 12 & 0.000 s. & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Resultados sobre Grafo Preprocesado por Algoritmo de Grafos Completos}
+Esta prueba aplica el algoritmo dirigido por fuerzas de Tunkelang sobre el grafo original (generado aleatoriamente), luego de ser preprocesado por el algoritmo para grafos completos. En la Tabla \ref{tab:resultados_com_alg_fue} pueden verse los promedios de tiempos de ejecución y de los crossing number resultantes comparados con los de los grafos preprocesados para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo dirigido por fuerzas de Tunkelang sobre los grafos originales aleatorios preprocesados por el algoritmo para grafos completos.}
+	\label{tab:resultados_com_alg_fue}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{4}{c|}{\textbf{Promedios}} \\
+		\cline{2-5}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{CN Grafo Prep.} & \textbf{CN Grafo Final} \\
+		\hline
+		10 & 12 & 0.000 s. & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\subsection{Resultados sobre Grafo Preprocesado por Algoritmo ArcGen}
+Esta prueba aplica el algoritmo dirigido por fuerzas de Tunkelang sobre el grafo original (generado aleatoriamente), luego de ser preprocesado por el algoritmo ArcGen. En la Tabla \ref{tab:resultados_gen_alg_fue} pueden verse los promedios de tiempos de ejecución y de los crossing number resultantes comparados con los de los grafos preprocesados para cada semilla.
+
+\begin{table}[H]
+	\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo dirigido por fuerzas de Tunkelang sobre los grafos originales aleatorios preprocesados por el algoritmo ArcGen.}
+	\label{tab:resultados_gen_alg_fue}
+	\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|}
+		\hline
+		\multirow{2}{2cm}{\textbf{Nro.Nodos (semilla)}} & \multicolumn{4}{c|}{\textbf{Promedios}} \\
+		\cline{2-5}
+		& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{CN Grafo Prep.} & \textbf{CN Grafo Final} \\
+		\hline
+		10 & 12 & 0.000 s. & 12 & 2 \\
+		\hline
+		15 & 20 & 0.000 s. & 39 & 11 \\
+		\hline
+		20 & 28 & 0.000 s. & 79 & 23 \\
+		\hline
+		25 & 35 & 0.000 s. & 132 & 42 \\
+		\hline
+		30 & 43 & 0.000 s. & 199 & 62 \\
+		\hline
+		35 & 50 & 0.000 s. & 283 & 93 \\
+		\hline
+		40 & 57 & 0.000 s. & 377 & 118 \\
+		\hline
+		45 & 65 & 0.000 s. & 486 & 162 \\
+		\hline
+		50 & 72 & 0.001 s. & 587 & 205 \\
+		\hline
+	\end{tabularx}
+\end{table}
+
+\section{Resultados Finales}
+\label{sec:resultados_finales}
+Finalmente se realiza la prueba completa, utilizando sobre el grafo original, el algoritmo para grafos completos, seguido por el algoritmo ArcGen y finalmente el algoritmo dirigido por fuerzas de Tunkelang. En la Tabla \ref{tab:resultados_orig_alg_com_gen_fue} pueden verse los promedios de tiempos de ejecución y de los crossing number resultantes para cada semilla. Luego, en la Tabla \ref{tab:resultados_comparacion} se comparan los resultados obtenidos anteriormente por el algoritmo de fuerzas con los resultados de esta prueba.
+	%La Tabla \ref{tab:resultados_exp}\ presenta los promedios mencionados de los resultados recopilados de las ejecuciones del algoritmo genético sobre grafos generados en forma aleatoria, con diferentes cantidades de nodos. 
+	
+	%	 La recopilación de resultados de ejecuciones del algoritmo genético sobre grafos generados aleatoriamente con diferentes cantidades de nodos y de estos se han obtenido promedios. Esta muestra los promedios de $100$ ejecuciones para cada número de nodos.
+	
+	
+	%Procesador sobre el que se corre.\\
+	%En general  trabajamos con modelos conceptuales que no tienen normalmente más de 4 arcos(relaciones entre los  nodos) por nodo (nodos conceptos o  clases o entidades)  
+	
+	%Tenemos probablemente muchas clases (nodos)\\
+	
+	%Teniendo en cuenta que la motivación del desarrollo de este algoritmo de layout es su incorporación y utilización en herramientas gráficas de modelado conceptual  y que generalmente los modelos no contienen  grandes cantidades de nodos, los test realizados sobre la aplicación  se han limitado a un máximo de 50 nodos.
+	\begin{table}[H]
+		\caption{Promedios de 100 pruebas sobre cada semilla (de 5 a 50), del algoritmo dirigido por fuerzas de Tunkelang sobre los grafos originales aleatorios preprocesados, primero por el algoritmo para grafos completos y luego por el algoritmo ArcGen.}
+		\label{tab:resultados_orig_alg_com_gen_fue}
+		\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|X|}
+			\hline
+			\multirow{2}{2cm}{\textbf{Nro. Nodos}} & \multicolumn{5}{c|}{\textbf{Promedios}} \\
+			\cline{2-6}
+			& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{Ciclos} & \textbf{CN Inicial} & \textbf{CN Final} \\
+			\hline
+			5 & 5 & 0.000 s. & 1 & 0 & 0 \\
+			\hline
+			10 & 12 & 0.002 s. & 2 & 2 & 0 \\
+			\hline
+			15 & 20 & 0.028 s. & 4 & 10 & 1 \\
+			\hline
+			20 & 27 & 0.125 s. & 6 & 22 & 3 \\
+			\hline
+			25 & 35 & 0.369 s. & 9 & 40 & 8 \\
+			\hline
+			30 & 43 & 0.914 s. & 11 & 63 & 13 \\
+			\hline
+			35 & 50 & 2.169 s. & 15 & 93 & 21 \\
+			\hline
+			40 & 57 & 3.974 s. & 18 & 117 & 28 \\
+			\hline
+			45 & 65 & 7.710 s. & 22 & 162 & 38 \\
+			\hline
+			50 & 72 & 13.013 s. & 25 & 194 & 45 \\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Comparación de resultados finales de la pruebas realizadas.}
+		\label{tab:resultados_comparacion}
+		\begin{tabularx}{\linewidth}{|X|X|p{1.5cm}|X|X|X|}
+			\hline
+			\multirow{2}{2cm}{\textbf{Nro. Nodos}} & \multicolumn{5}{c|}{\textbf{Promedios}} \\
+			\cline{2-6}
+			& \textbf{Nro. Arcos} & \textbf{Tiempo} & \textbf{Ciclos} & \textbf{CN Inicial} & \textbf{CN Final} \\
+			\hline
+			5 & 5 & 0.000 s. & 1 & 0 & 0 \\
+			\hline
+			10 & 12 & 0.002 s. & 2 & 2 & 0 \\
+			\hline
+			15 & 20 & 0.028 s. & 4 & 10 & 1 \\
+			\hline
+			20 & 27 & 0.125 s. & 6 & 22 & 3 \\
+			\hline
+			25 & 35 & 0.369 s. & 9 & 40 & 8 \\
+			\hline
+			30 & 43 & 0.914 s. & 11 & 63 & 13 \\
+			\hline
+			35 & 50 & 2.169 s. & 15 & 93 & 21 \\
+			\hline
+			40 & 57 & 3.974 s. & 18 & 117 & 28 \\
+			\hline
+			45 & 65 & 7.710 s. & 22 & 162 & 38 \\
+			\hline
+			50 & 72 & 13.013 s. & 25 & 194 & 45 \\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	%Los resultados obtenidos fueron aceptables respecto a lo esperado, en comparación con los algoritmos mencionados en el trabajo \cite{gibson2013survey}. La técnica Dirigida por Fuerzas de Tunkelang \cite{tunkelang1998jiggle},  una de las adecuadas, sufre de altos tiempos de ejecución y no promete un grafo óptimo,  según \cite{gibson2013survey}. \textsc{ArcGen} produce grafos con menores cruces a coste de un tiempo similar a la técnica Dirigida por Fuerzas, para los casos que se buscan resolver. En este sentido, estos resultados preliminares prometen un uso eficaz para fines prácticos de la futura herramienta finalizada.
+	
+	%Como se puede observar en grafos con mayor cantidad de nodos y arcos,  {\sc ArcGen} disminuyó la cantidad de cruces en hasta cuatro veces.
+	
+	% podemos encontrar que los algoritmos y técnicas de layout automático no presentan implementaciones libres que puedan ser utilizadas eficazmente en modelado conceptual. 
