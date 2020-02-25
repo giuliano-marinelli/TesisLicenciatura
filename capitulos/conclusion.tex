@@ -1,14 +1,21 @@
 \label{cap6}
 \chapter{Conclusiones}
+En esta Tesis se introdujeron el diseño y la implementación de un algoritmo para optimizar grafos completos y de uno genético, denominado {\sc ArcGen}, para mejorar grafos no completos. El objetivo de ambos es lograr un menor Crossing Number en grafos no dirigidos, mediante la utilización de la representación gráfica de Diagrama de Arcos.
+	
+Se describieron los detalles del desarrollo y se presentaron resultados experimentales que muestran una disminución en la cantidad de cruces entre el layout original y el mejor individuo obtenido después de aplicar el algoritmo.
 
-En el cap\'itulo final de esta tesis, se presentan las principales conclusiones y contribuciones. En primer lugar, se resumen los  puntos principales de 
-estudio a trav\'es de la reconsideraci\'on de los objetivos presentados en el primer cap\'itulo y de la discusi\'on de las fases principales que se 
-llevaron a cabo para alcanzar los mismos. En segundo lugar, se presentan las conclusiones describiendo las contribuciones te\'oricas y pr\'acticas producidas 
-en este trabajo. En la \'ultima secci\'on del cap\'itulo se discuten las limitaciones  y las l\'ineas futuras de trabajo en esta \'area.
+%El objetivo de estos algoritmos es utilizar una estructura sencilla sobre la que se puedan plantear algoritmos de complejidad NP-completo buscando obtener un mínimo Crossing Number. 
 
+El layout obtenido  a partir de {\sc ArcGen} no es el resultado final que visualizará el usuario en una herramienta gráfica de modelado, sino que se utiliza como entrada por otro algoritmo que traslada las posiciones de los nodos y arcos de manera que se pueda generar una visualización del mismo grafo pero de una manera más amigable al usuario. Este paso es la integración con el algoritmo de fuerzas de Tunkelang, la cuál permitió finalizar el ciclo del algoritmo de layout obteniendo una visualización final utilizable.
 
-\section{Resumen del Trabajo}
+Para realizar las pruebas necesarias se implemento una herramienta que permitió visualizar los resultados de los algoritmos como diagramas de arcos y facilitar su depuración. En la misma se incluyen todos los algoritmos desarrollados y la integración con librerías externas para utilizar el algoritmo de fuerzas y permitir la visualización de grafos genéricos.
 
-\section{Resumen de las Contribuciones}
+%Este último paso es la próxima etapa a desarrollar en este proyecto, para el cuál se tendrá en cuenta el lenguaje gráfico con el que se diseña el modelo y los criterios para los diferentes constructores de tales lenguajes. Los resultados obtenidos de los algoritmos implementados, se  consideran prometedores para la continuación del proyecto.
 
- \section{Limitaciones y Trabajos Futuros}
+ \section{Trabajos Futuros}
+
+Entre los trabajos futuros,  se encuentran la evaluación de  {\sc ArcGen} sobre modelos conceptuales reales y el cálculo de la complejidad computacional temporal de los algoritmos para alcanzar un mayor nivel de detalle en los resultados.
+
+Por otro lado la integración de {\sc ArcGen} con otros algoritmos de visualización general, además del de fuerzas que fue utilizado, para evaluar si existe mejoría y un mejor resultado final. Como también el desarrollo de algoritmos específicos para cada tipo de lenguaje de modelado (UML, ER, ORM, etc) que permitan mapear los diagramas de entrada en un grafo preferente para su utilización en los algoritmos desarrollados y luego mapearlos nuevamente al lenguaje de modelado específico.
+
+Finalmente, el desarrollo de una interfaz para integrar el algoritmo con herramientas de modelado como \emph{Crowd}. Formalizando un lenguaje para importar y exportar los diagramas con la herramienta. O bien, la integración de los algoritmos dentro de una herramienta específica para lograr una interacción mas rápida del usuario con los algoritmos de layout.

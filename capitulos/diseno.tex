@@ -1,6 +1,7 @@
-\chapter{Diseño del Algoritmo Genético Propuesto ArcGen}\label{cap3}
+\chapter{Diseño de los Algoritmos Propuestos}\label{cap3}
 
 \section{Algoritmo para Grafos Completos}
+\label{sec:diseno_algoritmo_completo}
 	%permite una representación del grafo de tal manera que los cruces que se obtenga de los nodos sean causa del orden de los nodos en una línea, y de la dirección (superior o inferior) que se le da al arco al dibujarlo, como puede observarse
 	Debido  a la  simplicidad de los Arc Diagram para esquematizar a los  grafos,  es que se  utiliza esta representación en busca de un grafo con una mínima cantidad de cruces de arcos.
 	
@@ -116,6 +117,7 @@
 	%Un algoritmo  que permite que un grafo completo obtenga la menor cantidad de cruces,  hace que un grafo cualquiera tenga pocos cruces.
 
 \section{Algoritmo ArcGen}
+\label{sec:diseno_algoritmo_arcgen}
 
 %	En la sección anterior hemos obtenido un Diagrama de Arcos, que a partir de un algoritmo sencillo y eficiente permite obtener un Crossing Number óptimo para arcos completos y uno relativamente bueno para grafos no completos. Ahora buscaremos optimizar estos últimos de manera que se pueda conseguir un resultado más satisfactorio, pero considerando algunas limitaciones en los grafos que trabajaremos.
 	
@@ -126,7 +128,7 @@
 	
 	\subsection{Representación de  los Individuos}
 	\label{subsec:representacion_individuos}
-	Cada individuo de la población corresponde a un Diagrama de Arcos. La representación incluye  los nodos y arcos del grafo, el orden de sus nodos sobre la línea (0 el nodo en el extremo izquierdo y  (n-1) el nodo en el extremo derecho) y el semiplano   (superior o inferior) en que se dibuja cada arco.
+	Cada individuo de la población corresponde a un Diagrama de Arcos. La representación incluye  los nodos y arcos del grafo, el orden de sus nodos sobre la línea (0 el nodo en el extremo izquierdo y  (n-1) el nodo en el extremo derecho) y el semiplano   (superior o inferior) en que se dibuja cada arco, como se muestra en la figura \ref{fig:representacion_diagrama_arcos}.
 	
 	%\todo[inline]{Creo que no se requiere mantener dos arreglos  iguales.  Para que mantenes dos  arreglos iguales en distinto orden? No estoy segura que esto que corresponde más a implementación vaya acá}
 	
@@ -144,9 +146,17 @@
 	Teniendo en cuenta que  el grafo es  no dirigido, se considera que cada arco es único, es decir, solo se representa la relación de un nodo $n_i$ a un nodo $n_j$ y no la relación $n_j$ a $n_i$. Sin embargo, es posible extender la representación sin dificultad a digrafos.
 	%buscar una estructura para que la representación sea eficiente (considerar como se muta)
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=4cm]{imagenes/representacion_ejemplo_1.png}
+		\includegraphics[width=7cm]{imagenes/representacion_ejemplo_2.png}
+		\caption{Estructura de datos para la representación de un diagrama de arcos.}
+		\label{fig:representacion_diagrama_arcos}
+	\end{figure}
+	
 	\subsection{Generación de Población Inicial}
 	\label{subsec:generar_poblacion_inicial}
-	La población inicial se genera a partir del Diagrama de Arcos obtenido del algoritmo explicado en la sección \ref{sec:arcdiagram}. 
+	La población inicial se genera a partir del Diagrama de Arcos obtenido del algoritmo explicado en la sección \ref{sec:diseno_algoritmo_completo}. 
 	Para ello, se utiliza como semilla, al Diagrama de Arcos del  grafo  y  se realizan todas las posibles variaciones en un solo paso de orden de nodos y ubicación en los semiplanos de los arcos. Así, un posible individuo de la población inicial es la representación gráfica del grafo resultante de intercambiar el orden de dos nodos del Diagrama de Arcos, o de cambiar el semiplano donde se grafica  un arco particular, como se muestra en el ejemplo de la Figura \ref{fig:ejemplo_mutacion}.
 	
 	\begin{figure*}[h]
@@ -175,7 +185,7 @@
 	
 	\subsection{Mutación}
 	\label{subsec:mutacion}
-	El algoritmo  genético propuesto utiliza   mutación en sus individuos, pero en esta primer versión  no se aplica crossover. Esta decisión de  diseño está basada en 
+	El algoritmo  genético propuesto utiliza   mutación en sus individuos, pero  no se aplica crossover. Esta decisión de  diseño está basada en 
 	algoritmos genéticos  con  objetivos similares \cite{he2007parallelisation, eloranta2001timga}. Sus autores especifican que  el crossover no es muy eficiente para resolver este problema, según los resultados experimentales obtenidos, por lo que se proponen porcentajes de mutación más altos y un crossover mínimo.
 	%A partir del   relevamiento y análisis de algunos algoritmos genéticos  con  objetivos similares \cite{he2007parallelisation, eloranta2001timga}, en los cuáles se muestra que el crossover no es muy eficiente para este problema, según los resultados experimentales obtenidos, por lo que se proponen porcentajes de mutación más altos y un crossover mínimo.
 	
@@ -226,5 +236,20 @@
 	%Ejemplificar
 
 \section{Integración con Algoritmos de Layout para Grafos Genéricos}
+\label{sec:integracion_generico}
+Los algoritmos presentados en secciones anteriores utilizan un estilo de dibujado de diagrama de arcos para representar a los individuos que computan, esto es debido a la facilidad que este tipo de representación otorga para trabajar sobre el problema de crossing number para grafos. En contraparte el grafo resultante, a pesar de mejorar el crossing number original, no es apto para ser operado por un usuario final en una actividad de modelado, por lo que para poder finalizar el ciclo de estos algoritmos de layout y darle un uso práctico, es necesario realizar un último paso para transformar su estilo de dibujado en uno mas intuitivo o genérico para que el usuario pueda visualizarlo fácilmente.
+
+Existen varios algoritmos de layout que trabajan sobre grafos genéricos y que pueden servir para darle forma al grafo final que se busca obtener. En este sentido, el proceso se esquematiza como muestra la figura \ref{fig:integracion_generico_diseno}, donde dado un grafo de entrada, se transforma el mismo en un diagrama de arcos para ser procesado por los algoritmos de este trabajo, luego al resultado se le realiza una transformación para adaptarlo al algoritmo que se utilizará finalmente para presentar el resultado como un grafo genérico.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm]{imagenes/integracion_generico_diseno.png}
+	\caption{Esquema del proceso de aplicación de los algoritmos y su interacción con algoritmos para grafos genéricos.}
+	\label{fig:integracion_generico_diseno}
+\end{figure}
 
 \subsection{Transformación de un Diagrama de Arcos en un Grafo Genérico}
+\label{sec:transformacion_generico}
+Para poder presentar el resultado final como un grafo genérico es necesario uno o varios procesos que realicen una transformación sobre el diagrama de arcos resultante y permita utilizarlo como entrada para algún otro algoritmo que de la presentación final del grafo. Para este proceso hay que tener en cuenta que la representación que se utiliza para los individuos en el algoritmo para grafos completos y el algoritmo ArcGen, no explicita como se graficarán las aristas mas allá de su posición con respecto al semiplano y de que nodos conecta. En este sentido, al transformarse a un grafo genérico, es necesario agregar información extra a las aristas o a los nodos, ya sea indicando nuevos puntos para articular las líneas o indicando posiciones diferentes para los nodos. Cualquier cambio en la representación gráfica puede producir que el crossing number cambie.
+
+Este proceso no necesariamente debe utilizar la información concebida como un diagrama de arcos, si no que puede visualizar los ordenes que se dieron a los nodos y la disposición de los arcos como información de base para ponderarlos y a partir de ello graficarlos mediante algún criterio.

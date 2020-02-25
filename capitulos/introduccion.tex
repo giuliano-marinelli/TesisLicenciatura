@@ -21,9 +21,9 @@ Actualmente, las herramientas de  modelado gráficas  y automáticas que asisten
 	
 	%Para este trabajo se plantea un algoritmo que recibirá como entrada un modelo conceptual expresado en diferentes lenguajes como UML, ER, ORM, etc, y se buscará un
 	
-	En este trabajo se introduce un nuevo algoritmo  genético,  denominado \textsc{ArcGen},  que es el  punto de partida  para  resolver el problema de la correcta visualización de un modelo conceptual expresado en UML o  ER  y que será incorporado a {\it Crowd} \cite{gimenez2016crowd}. {\it Crowd} es una herramienta web para modelado ontológico utilizando los lenguajes  UML \cite{booch2005unified}\ y  ER \cite{chen1988entity}, con soporte de razonamiento para asistir al usuario en tareas de diseño y validación. 
+	En este trabajo se introduce un nuevo algoritmo  genético,  denominado \textsc{ArcGen},  que es el  punto de partida  para  resolver el problema de la correcta visualización de un modelo conceptual expresado en UML o  ER  y que busca ser incorporado a {\it Crowd} \cite{gimenez2016crowd}. {\it Crowd} es una herramienta web para modelado ontológico utilizando los lenguajes  UML \cite{booch2005unified}\ y  ER \cite{chen1988entity}, con soporte de razonamiento para asistir al usuario en tareas de diseño y validación. 
 	
-	En esta primer etapa,  nos centramos en la resolución del problema de Crossing Number, motivados por la  importancia  estética de reducir el número de cruces de arcos en la representación gráfica de grafos \cite{Kob14}. Este es un problema NP-Completo \cite{garey1983crossing} de gran importancia para la visualización de grafos, que radica en evitar, en la mayor medida posible, que los arcos de un grafo dibujado sobre el plano Euclídeo se crucen.
+	Nos centramos en la resolución del problema de Crossing Number, motivados por la  importancia  estética de reducir el número de cruces de arcos en la representación gráfica de grafos \cite{Kob14}. Este es un problema NP-Completo \cite{garey1983crossing} de gran importancia para la visualización de grafos, que radica en evitar, en la mayor medida posible, que los arcos de un grafo dibujado sobre el plano Euclídeo se crucen.
 	%de manera que se obtenga un grafo con menos puntos de  cruces de arcos  respecto del grafo original. 
 	Asimismo, circunscribimos la solución que se propone  a grafos con ciertas características encontradas en los diagramas de modelado conceptual (tamaño y complejidad).
 	
@@ -45,26 +45,81 @@ Actualmente, las herramientas de  modelado gráficas  y automáticas que asisten
 	
 	Por otro lado, el propuesto por Hongmei He et al. \cite{he2007parallelisation}\ considera la representación  Diagrama de Arcos, pero comienza con una población generada aleatoriamente a diferencia de \textsc{ArcGen} que genera la población a partir de un individuo dado por el algoritmo de grafos completos. Esto causa que el algoritmo consuma más tiempo en alcanzar un máximo local o global, quitándole practicidad para el objetivo buscado.
 	
-	En el survey de Helen Gibson et al. \cite{gibson2013survey} se han recopilado gran variedad de algoritmos de layout, de los cuáles el más adecuado, con respecto a precisión y velocidad, para layout en modelado conceptual, es el algoritmo Dirigido por Fuerzas de Tunkelang \cite{tunkelang1998jiggle}. Este algoritmo  propone un modelo físico donde los nodos y arcos realizan fuerzas de repulsión entre ellos para evitar cruzamientos. Esta simulación se realiza por un tiempo dado hasta obtener el resultado deseado. Tal algoritmo no consigue la precisión que se busca, debido a que la eficacia del resultado está ligada a las posiciones iniciales del grafo de entrada. %, por lo que se consideró abordar el problema desde un modelo jerárquico, el cual consta de un reordenamiento de posiciones fijas, tal como se realiza en los algoritmos genéticos mencionados anteriormente.
+	En el survey de Helen Gibson et al. \cite{gibson2013survey} se han recopilado gran variedad de algoritmos de layout, de los cuáles el más adecuado, con respecto a precisión y velocidad, para layout en modelado conceptual, es el algoritmo Dirigido por Fuerzas de Tunkelang \cite{tunkelang1998jiggle}. Este algoritmo  propone un modelo físico donde los nodos y arcos realizan fuerzas de repulsión entre ellos para evitar cruzamientos. Esta simulación se realiza por un tiempo dado hasta obtener el resultado deseado. Tal algoritmo puede variar la eficacia del resultado según las posiciones iniciales del grafo de entrada y sobre grafos con mucha densidad es menos efectivo, por lo que los algoritmos de este trabajo buscan mejorar este aspecto. %, por lo que se consideró abordar el problema desde un modelo jerárquico, el cual consta de un reordenamiento de posiciones fijas, tal como se realiza en los algoritmos genéticos mencionados anteriormente.
 	
-	Este trabajo está organizado de la siguiente manera. En la sección 	\ref{sec:arcdiagram},  se propone un algoritmo  que esquematiza  un grafo arbitrario en un Diagrama de Arcos optimizado para grafos completos. En la sección \ref{sec:genetico}, se explica el algoritmo genético desarrollado para minimizar la cantidad de cruces de arcos  respecto del  grafo original. Luego en la sección \ref{sec:implementacion}, se describe la aplicación que genera el grafo optimizado. En la sección \ref{sec:resultados}, se presentan resultados experimentales realizados  sobre la aplicación. Finalmente, se presentan las conclusiones y trabajos futuros.
+	%Este trabajo está organizado de la siguiente manera. En la sección \ref{sec:arcdiagram},  se propone un algoritmo  que esquematiza  un grafo arbitrario en un Diagrama de Arcos optimizado para grafos completos. En la sección \ref{sec:genetico}, se explica el algoritmo genético desarrollado para minimizar la cantidad de cruces de arcos  respecto del  grafo original. Luego en la sección \ref{sec:implementacion}, se describe la aplicación que genera el grafo optimizado. En la sección \ref{sec:resultados}, se presentan resultados experimentales realizados  sobre la aplicación. Finalmente, se presentan las conclusiones y trabajos futuros.
 
-\section{Objetivos}
-
+\section{Objetivos y Contribuciones}
 El objetivo general de este trabajo es el diseño e implementación  de un algoritmo de layout automático de grafos para la visualización en herramientas de modelado conceptual. Se pretende trabajar en un diseño que utilice técnicas de Inteligencia Artificial y que  permita adaptar las funcionalidades de visualización de los diagramas, considerando los diferentes lenguajes de modelado conceptual, como EER, UML y \mbox{ORM 2.}
 Se espera que los expertos o modeladores puedan utilizar tales herramientas de acuerdo a sus preferencias de notación con una disposición apropiada de los elementos visuales de los lenguajes de modelado conceptual, lo que redituará en una mejor legibilidad y un adecuado entendimiento del diagrama, potenciando la comunicación entre los interesados en la información del modelo.
 
-
-
-\subsection{Objetivos Específicos}
+Las principales contribuciones de este trabajo son:
 
 \begin{itemize}
-\item Analizar e identificar las cualidades que debe tener la disposición de un grafo, para que su visualización sea  satisfactoria.%, como también relevar las técnicas de layouts automáticos para grafos ya existentes.
+\item Diseño e implementación de un algoritmo que permite resolver un mínimo crossing number sobre diagramas de arcos para grafos completos.
 
-\item Diseñar un algoritmo que permita realizar layout automático con técnicas de Inteligencia Artificial, orientado a su aplicación específica en modelado conceptual y que cumpla con las cualidades identificadas.
-\item Implementar un prototipo de dicho algoritmo.% de manera que pueda ser integrado en herramientas de modelado conceptual como {\it Crowd}\cite{gimenez2016crowd}.
+\item Diseño e implementación de un algoritmo que permite alcanzar un mejor crossing number sobre  grafos no completos utilizando técnicas de algoritmos genéticos.
+
+\item Integración de los algoritmos desarrollados con otros algoritmos de layout como el dirigido por fuerzas de Tunkelang.
+
+\item Implementación de una herramienta de prueba para los algoritmos desarrollados.
 
 \end{itemize}
-% \section{Contribuciones}
 
-% \section{Estructura de la Tesis}
+\section{Estructura de la Tesis}
+La tesis incluye los contenidos necesarios para que su lectura sea auto contenida, asumiéndose conocimientos a nivel de grado de teoría de la computación, programación y complejidad computacional. A continuación se describe la estructura de esta Tesis.
+
+\subsubsection{Capítulo 1: Introducción}
+En este capítulo se presenta la motivación, los objetivos, contribuciones y la organización de esta Tesis
+
+\subsubsection{Capítulo 2: Antecedentes Conceptuales}
+Se describen los conceptos teóricos fundamentales para este trabajo. Se describen algunos conceptos de teoría de grafos, problemas NP, algoritmos de layout y algoritmos evolutivos y genéticos.
+
+\subsubsection{Capítulo 3: Diseño de los Algoritmos Propuestos}
+Se describe el diseño de los algoritmos desarrollados, como interactúan entre ellos y su integración con otros posibles algoritmos.
+
+\subsubsection{Capítulo 4: Implementación de los Algoritmos Propuestos}
+Se describe la herramienta implementada para la depuración de los algoritmos, las especificaciones técnicas de la misma, y la integración con otra librería que provee el algoritmo de layout dirigido por fuerzas.
+
+\subsubsection{Capítulo 5: Resultados Experimentales}
+Se muestran los resultados obtenidos a partir de la ejecución de conjuntos de pruebas para medir la eficiencia de los algoritmos de este trabajo.
+
+\subsubsection{Capítulo 6: Trabajos Relacionados}
+Se exponen los diferentes trabajos que fueron relevados. Se los compara entre ellos y se analiza su efectividad para ser aplicados en el campo de modelado conceptual.
+
+\subsubsection{Capítulo 7: Conclusiones}
+ Finalmente, se presentan las conclusiones de esta tesis, los resultados obtenidos, avalados con publicaciones en congresos con referato y se proponen algunas ideas para trabajos futuros.
+
+% La tesis incluye los contenidos necesarios para que su lectura sea auto contenida, asumiéndose
+% conocimientos a nivel de grado de lógica clásica, representación de conocimiento y ontologías, y
+% arquitecturas de software. A continuación se describe la estructura de esta Tesis.
+% Capítulo 1: Introducción
+% En este capítulo se presenta la motivación, los objetivos, contribuciones y la organización
+% de esta Tesis.
+% Capítulo 2: Variabilidad en SPL
+% Se describen los modelos de variabilidad ortogonal detallando cada uno de los elementos
+% e interacciones que los conforman. Posteriormente, se explica el proceso de análisis de
+% variabilidad automático de los diagramas OVM, enfocándose principalmente en la detección
+% de problemas.
+% Capítulo 3: Técnica de Análisis Automatizado para OVM
+% Se describe la técnica utilizada para realizar el análisis de variabilidad automatizado. Se
+% introducen las Lógicas Descriptivas y se detalla la codificación en ALCI de los modelos
+% OVM. Por último, se describen los principales antipatrones a identificar durante el proceso
+% de Detección de Problemas.
+% Capítulo 4: Diseño de la Herramienta
+% En este capítulo, se describe el proceso de detección de problemas y posteriormente, se
+% detalla el modelo cliente-servidor propuesto, los módulos y los diseños preliminares que
+% cumplen con los objetivos propuestos por esta tesis.
+% Capítulo 5: Implementación de la Herramienta
+% Se describe a crowd-variability, una implementación de la herramienta. Se detallan los
+% cambios realizados gráficamente al diseñar las primitivas, la representación intermedia de
+% los modelos y el editor gráfico, entre otros. Se concluye el capítulo con un ejemplo de uso
+% de la implementación, donde se muestra su funcionamiento con un modelo que no presenta
+% antipatrones y otro que presenta.
+% Capítulo 6: Trabajos Relacionadas
+% Se introducen una serie de enfoques relacionados que fueron relevados. Se los compara con
+% crowd-variability, considerando el lenguaje de modelado de variabilidad, el uso de lenguajes
+% gráficos para el modelado, el método de formalización de los diagramas y la utilización de
+% servicios de razonamiento subyacentes.
+% Capítulo 7: Conclusiones
+% Finalmente, se presentan las conclusiones de esta tesis, los resultados obtenidos, avalados
