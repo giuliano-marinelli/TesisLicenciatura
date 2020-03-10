@@ -1,21 +1,58 @@
 \label{cap6}
 \chapter{Conclusiones}
-En esta Tesis se introdujeron el diseño y la implementación de un algoritmo para optimizar grafos completos y de uno genético, denominado {\sc ArcGen}, para mejorar grafos no completos. El objetivo de ambos es lograr un menor Crossing Number en grafos no dirigidos, mediante la utilización de la representación gráfica de Diagrama de Arcos.
-	
+Las herramientas de modelado gráficas y automáticas que asisten a los modeladores son esenciales debido al incremento en la complejidad de los sistemas de información. En este sentido los algoritmos de layout automáticos permiten el reordenamiento de los elementos gráficos de los diagramas, para que se disponga una visualización más satisfactoria para los usuarios. 
+
+Lamentablemente, los algoritmos de layout están basados en problemas de optimización combinatorios, por lo que heredan la complejidad computacional de éstos, que en su mayoría son NP-Completos.
+
+Estos problemas trabajan sobre grafos y se centran en mejorar alguna característica particular del mismo, como puede ser el número de cruces entre sus arcos, el espacio que ocupan en el plano, o la disposición simétrica de los nodos, entre otras.
+
+%Actualmente, las herramientas de modelado gráficas y automáticas que asisten a los mode-ladores son esenciales debido al incremento en la complejidad de los sistemas de información.Una mala disposición gráfica de los elementos del diagrama en el modelo dificulta su lectura ysu comprensión [51, 50, 35, 55].Los algoritmos de layout automáticos permiten el reordenamiento de los elementos gráficosde los diagramas de modelado, de manera que se disponga una visualización más satisfactoria delos mismos, como puede verse en la Figura 1.1. Sin embargo, por estar basados en problemas deoptimización combinatorios, heredan la complejidad computacional de éstos, que en su mayoríason NP-Completos 
+
+En esta tesis se introdujeron el diseño y la implementación de un algoritmo para optimizar grafos completos y de uno genético, denominado {\sc ArcGen}, para mejorar grafos no completos. El objetivo de ambos es lograr un menor Crossing Number en grafos no dirigidos, mediante la utilización de la representación gráfica de Diagrama de Arcos.
 Se describieron los detalles del desarrollo y se presentaron resultados experimentales que muestran una disminución en la cantidad de cruces entre el layout original y el mejor individuo obtenido después de aplicar el algoritmo.
 
 %El objetivo de estos algoritmos es utilizar una estructura sencilla sobre la que se puedan plantear algoritmos de complejidad NP-completo buscando obtener un mínimo Crossing Number. 
 
 El layout obtenido  a partir de {\sc ArcGen} no es el resultado final que visualizará el usuario en una herramienta gráfica de modelado, sino que se utiliza como entrada por otro algoritmo que traslada las posiciones de los nodos y arcos de manera que se pueda generar una visualización del mismo grafo pero de una manera más amigable al usuario. Este paso es la integración con el algoritmo de fuerzas de Tunkelang, la cuál permitió finalizar el ciclo del algoritmo de layout obteniendo una visualización final utilizable.
 
-Para realizar las pruebas necesarias se implemento una herramienta que permitió visualizar los resultados de los algoritmos como diagramas de arcos y facilitar su depuración. En la misma se incluyen todos los algoritmos desarrollados y la integración con librerías externas para utilizar el algoritmo de fuerzas y permitir la visualización de grafos genéricos.
+Para realizar los experimentos necesarios se implementó una herramienta para visualizar los resultados de los algoritmos como Diagramas de Arcos y facilitar su depuración. En la misma se incluyen todos los algoritmos desarrollados y la integración con librerías externas para utilizar el algoritmo de fuerzas y permitir la visualización de grafos genéricos.
 
 %Este último paso es la próxima etapa a desarrollar en este proyecto, para el cuál se tendrá en cuenta el lenguaje gráfico con el que se diseña el modelo y los criterios para los diferentes constructores de tales lenguajes. Los resultados obtenidos de los algoritmos implementados, se  consideran prometedores para la continuación del proyecto.
+\section{Contribuciones}
+A partir de los objetivos planteados en el Capitulo \ref{cap1},  las principales contribuciones de este trabajo son:
+
+%Objetivos Específicos:
+%\item Analizar e identificar las cualidades que debe tener la disposición de un grafo, para que su visualización sea  satisfactoria.
+%\item Diseñar un algoritmo que permita realizar layout automático con técnicas de Inteligencia Artificial, orientado a su aplicación específica en modelado conceptual y que cumpla con las cualidades identificadas.
+%\item Implementar un prototipo de dicho algoritmo.
+
+\begin{itemize}
+\item Análisis de la visualización de grafos completos, dibujados como Diagramas de Arcos.  Descubrimiento de  patrones en la disposición de los cruces.
+\item Diseño e implementación de un algoritmo que permite resolver un mínimo crossing number sobre Diagramas de Arcos para grafos completos.
+\item Diseño e implementación de {\sc ArcGen}, algorimto que permite alcanzar un mejor crossing number sobre  grafos no completos, utilizando técnicas de algoritmos genéticos.
+
+\item Integración de los algoritmos desarrollados con el  algoritmo de layout  dirigido por fuerzas de Tunkelang.
+
+\item Implementación de una herramienta para el  análisis experimental de los algoritmos desarrollados.
+
+\item Experimentación sobre los algoritmos desarrollados, con casos de tamaño acorde a los modelos conceptuales  reales, a partir de los que se muestra  la eficiencia de los  algoritmos.% respecto de la conjetura de Guy.
+
+\end{itemize}
 
  \section{Trabajos Futuros}
 
-Entre los trabajos futuros,  se encuentran la evaluación de  {\sc ArcGen} sobre modelos conceptuales reales y el cálculo de la complejidad computacional temporal de los algoritmos para alcanzar un mayor nivel de detalle en los resultados.
+Entre los trabajos futuros,  se encuentran la evaluación de  {\sc ArcGen} sobre modelos conceptuales reales y el cálculo de la complejidad computacional temporal de los algoritmo, para alcanzar un mayor nivel de detalle en los resultados.
 
-Por otro lado la integración de {\sc ArcGen} con otros algoritmos de visualización general, además del de fuerzas que fue utilizado, para evaluar si existe mejoría y un mejor resultado final. Como también el desarrollo de algoritmos específicos para cada tipo de lenguaje de modelado (UML, ER, ORM, etc) que permitan mapear los diagramas de entrada en un grafo preferente para su utilización en los algoritmos desarrollados y luego mapearlos nuevamente al lenguaje de modelado específico.
+Una propuesta interesante sería la integración de {\sc ArcGen} con otros algoritmos de visualización general, que difieran del dirigido por fuerzas, de manera de   evaluar mejorías en la disposición final del grafo. 
 
-Finalmente, el desarrollo de una interfaz para integrar el algoritmo con herramientas de modelado como \emph{Crowd}. Formalizando un lenguaje para importar y exportar los diagramas con la herramienta. O bien, la integración de los algoritmos dentro de una herramienta específica para lograr una interacción mas rápida del usuario con los algoritmos de layout.
+Otra medida de mejora sería  el desarrollo de algoritmos específicos para cada tipo de lenguaje de modelado conceptual(UML, ER, ORM 2, etc), que permitan mapear los diagramas de entrada en un grafo con las características apropiadas al lenguaje  utilizado. 
+
+Finalmente, un trabajo futuro  es el desarrollo de una interfaz para integrar los algoritmos  desarrollados con herramientas de modelado, como \emph{crowd}, formalizando un lenguaje para importar y exportar los diagramas con la herramienta, o bien, integrando los algoritmos dentro de una herramienta específica para lograr una interacción mas rápida con los usuarios. %del usuario con los algoritmos de layout.
+
+
+\section{Publicaciones}
+Algunos resultados, relacionados con esta tesis, han formado parte las siguientes publicaciones:
+\begin{itemize}
+\item Giuliano Marinelli, Germán Braun, Laura Cecchi y Pablo Fillottrani. ``ArcGen: Hacia un Algoritmo Genético de Layout Automático para Visualización de Modelos Conceptuales''. \emph{6to Congreso Nacional de Ingeniería en Informática / Sistemas de Información (CoNaIISI)}. Noviembre del año 2018, Mar del Plata, Buenos Aires, Argentina.
+\item Giuliano Marinelli, Germán Braun, Laura Cecchi y Pablo Fillottrani. ``Algoritmos de Layout Automático para una Herramienta Multi-Vistas de Modelado Ontológico''. \emph{XX Workshop de Investigadores en Ciencias de la Computación}. Abril del año 2018, Corrientes, Corrientes, Argentina.
+\end{itemize}

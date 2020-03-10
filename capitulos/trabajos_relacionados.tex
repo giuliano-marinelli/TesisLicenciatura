@@ -1,8 +1,7 @@
-\label{cap_trabajos_relacionados}
-\chapter{Trabajos Relacionados}
-En este capítulo se describen brevemente aquellos algoritmos y herramientas propuestas existentes que fueron investigadas durante el transcurso de este trabajo. Algunas de ellas son herramientas que incluyen algoritmos de layout incorporados, otras brindan interfaces de prueba que nos permiten ver el funcionamiento de los algoritmos teorizados, y por otro lado algunos simplemente diseñan los algoritmos o metodologías pero no presentan una implementación.
+\chapter{Trabajos Relacionados}\label{cap_trabajos_relacionados}
+En este capítulo se describen brevemente aquellos algoritmos y herramientas propuestas existentes que fueron investigadas durante el transcurso de este trabajo. Algunas de ellas son herramientas que incluyen algoritmos de layout incorporados, otras brindan interfaces de prueba que nos permiten ver el funcionamiento de los algoritmos teorizados, y algunos, simplemente, diseñan los algoritmos o metodologías, pero no presentan una implementación.
 
-Las implementaciones consideradas son las siguientes: 
+%Las implementaciones consideradas son las siguientes: 
 
 % En este capítulo se describen brevemente aquellas herramientas y propuestas existentes que
 % fueron investigadas durante el transcurso de este trabajo. Algunas de ellas permiten la creación y
@@ -16,11 +15,13 @@ Las implementaciones consideradas son las siguientes:
 % [19]. Otras propuestas en consideración que no presentan implementación son: [5, 42].
 
 \section{Algoritmo de Fuerzas de Tunkelang}
-Uno de los algoritmos mas conocidos para layout de grafos genéricos es el Algoritmo Dirigido por Fuerzas de Tunkelang \cite{tunkelang1998jiggle}. Este algoritmo  propone un modelo físico donde los nodos y arcos realizan fuerzas de repulsión entre ellos para evitar cruzamientos. Esta simulación se realiza por un tiempo dado hasta obtener el resultado deseado. En este la eficacia del resultado está ligada a las posiciones iniciales del grafo de entrada y, en este sentido, a la densidad o separación de sus nodos y arcos.
+Uno de los algoritmos más conocidos para layout de grafos genéricos es el Algoritmo Dirigido por Fuerzas de Tunkelang\cite{tunkelang1998jiggle}. Este algoritmo  propone un modelo físico, donde los nodos y arcos realizan fuerzas de repulsión entre ellos para evitar cruzamientos. Esta simulación se realiza por un tiempo dado hasta obtener el resultado deseado. En éste, la eficacia del resultado está ligada a las posiciones iniciales del grafo de entrada y, en este sentido, a la densidad o separación de sus nodos y arcos.
 
-Este algoritmo no presenta una visualización simétrica de los nodos y es mas efectivo para grafos dispersos. Se han hecho pruebas satisfactorios con grafos de hasta unos 60 nodos \cite{gibson2013survey}.
+Este algoritmo no presenta una visualización simétrica de los nodos y es más efectivo para grafos dispersos. Se han hecho pruebas satisfactorios con grafos de hasta unos 60 nodos\cite{gibson2013survey}.
 
-\begin{figure*}[h]
+En la Figura \ref{fig:jiggle} se muestra una implementación del algoritmo de fuerzas, llamada Jiggle, que permite realizar pruebas sobre diferentes tipos de grafos y variando las propiedades del algoritmo.
+
+\begin{figure}[H]
 	\centering
 	\subfigure[Grafo original generado aleatoriamente.]{
 		\includegraphics[width=7cm]{imagenes/jiggle_1.png}
@@ -32,53 +33,54 @@ Este algoritmo no presenta una visualización simétrica de los nodos y es mas e
 	}
 	\caption{Ejemplo de layout de grafo utilizando la herramienta Jiggle que provee Tunkelang para probar sus algoritmos.}
 	\label{fig:jiggle}
-\end{figure*}
+\end{figure}
 
 % En el survey de Helen Gibson et al. \cite{gibson2013survey} se han recopilado gran variedad de algoritmos de layout, de los cuáles el más adecuado, con respecto a precisión y velocidad, para layout en modelado conceptual, es el algoritmo Dirigido por Fuerzas de Tunkelang \cite{tunkelang1998jiggle}. Este algoritmo  propone un modelo físico donde los nodos y arcos realizan fuerzas de repulsión entre ellos para evitar cruzamientos. Esta simulación se realiza por un tiempo dado hasta obtener el resultado deseado. En este la eficacia del resultado está ligada a las posiciones iniciales del grafo de entrada.
 
 \section{Algoritmos Genéticos de Layout: TimGA y Hongmei He}
-Los algoritmos de TimGA \cite{eloranta2001timga} utilizan grafos genéricos, es decir sin ninguna disposición particular de los nodos y arcos, para representar los individuos de sus algoritmos genéticos, como se muestra en la figura \ref{fig:timga_representacion}. En general este esquema de representación de individuos produce que las operación de variación que se tengan que definir sean mas complejas que con otras representaciones mas simples, y por lo tanto la computación del algoritmo se ve demorada.
+El algoritmo de TimGA \cite{eloranta2001timga} utiliza grafos genéricos, es decir, sin ninguna disposición particular de los nodos y arcos, para representar los individuos de sus algoritmos genéticos, como se muestra en la Figura \ref{fig:timga_representacion}. En general, este esquema de representación de individuos produce que la operación de variación, que se defina sea más compleja que con otras representaciones más simples, y por lo tanto la computación del algoritmo se ralentiza.
 
-Las pruebas realizadas sobre estos algoritmos han dado tiempos considerables para alcanzar un máximo local o global, debido a la gran variabilidad que existe entre grafos sin ningún estilo de dibujado particular \cite{gibson2013survey} (ver sección \ref{sec:estilos_de_dibujado}).
+Las pruebas realizadas sobre estos algoritmos han dado tiempos considerables para alcanzar un máximo local o global, debido a la gran variabilidad que existe entre grafos sin ningún estilo de dibujado particular \cite{gibson2013survey}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm]{imagenes/timga_representacion.png}
-	\caption{Representación de individuos en TimGA \cite{eloranta2001timga}.}
+	\caption{Representación de individuos en el Algoritmo de TimGA \cite{eloranta2001timga}.}
 	\label{fig:timga_representacion}
 \end{figure}
 
-Por otro lado Hongmei He \cite{he2007parallelisation} utiliza para representar a sus individuos un estilo de dibujado de diagrama de arcos (ver sección \ref{sec:dibujado_diagrama_de_arcos}) y busca que la implementación del algoritmo permita utilizar paralelismo para agilizar su computación. A pesar de esto, los resultados que obtiene manejan tiempos considerables para la práctica debido en gran medida a que el grafo inicial del que parten para la generación de la población inicial es aleatorio y en ciertos casos puede llevar mucho tiempo alcanzar un máximo local \cite{gibson2013survey}.
+Por otro lado, Hongmei He\cite{he2007parallelisation} utiliza para representar a sus individuos un estilo de dibujado de Diagrama de Arcos  y busca que la implementación del algoritmo permita utilizar paralelismo para agilizar su computación. A pesar de esto, los resultados que obtiene manejan tiempos considerables para la práctica, debido en gran medida a que el grafo inicial del que parten para la generación de la población inicial es aleatorio y en ciertos casos puede llevar mucho tiempo alcanzar un máximo local \cite{gibson2013survey}.
 
-Ambos algoritmos consideran como parámetro principal para evaluar el fitness de sus individuos el crossing number de estos (ver sección \ref{sec:crossing_number}).
+Ambos algoritmos consideran como parámetro principal para evaluar el fitness de sus individuos el crossing number de éstos.
 
 % Por otro lado, otros algoritmos desarrollados para diagramas  genéricos que  utilizan métodos adaptativos, como por ejemplo algoritmos genéticos  \cite{eloranta2001timga, he2007parallelisation},  tienen problemas por la  considerable cantidad de generaciones que deben analizar, lo que conlleva a que  se consuma un tiempo elevado en alcanzar un máximo local o global. 
 	
 \section{Plugins de Layout para Protégé: OntoGraph, OWLViz y SOVA}
 Protégé \cite{knublauch2004protege} incluye entre sus plugins pre-instalados, utilidades de visualización de ontologías como son OntoGraph \cite{falconer2010ontograf}[Fig. \ref{fig:ontograph}] y OWLViz \cite{horridge2010owlviz} [Fig. \ref{fig:owlviz}]. Estos brindan la capacidad a Protégé de visualizar una ontología en lenguaje OWL como un árbol, con conectores que simbolizan las relaciones de subsunción y las equivalencias entre las clases.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=13cm]{imagenes/ontograph.png}
 	\caption{Herramienta Protégé utilizando el plugin OntoGraph sobre una ontología en OWL.}
 	\label{fig:ontograph}
 \end{figure}
-
-Los algoritmos de layout que disponen incluyen una distribución en forma de árbol descendiente o lateral. En el caso de OntoGraph también incluye un algoritmo de layout basado en un sistema de resortes (Spring Systems) \cite{kobourov2012spring}[Fig. \ref{fig:spring_systems}]. Este algoritmo funciona de manera similar al de dirigido por fuerzas de Tunkelang \cite{tunkelang1998jiggle}, computando fuerzas de atracción entre los nodos adyacentes y fuerzas de repulsión entre todos los pares de nodos.
-
-\begin{figure}[H]
+\begin{figure}
 	\centering
-	\includegraphics[width=13cm]{imagenes/spring_systems.png}
-	\caption{Ilustración de un sistema de resortes genérico: empenzando desde posiciones aleatorias, trata al grafo como un sistema de resortes y busca encontrar una configuración estable \cite{gajer2002grip}.}
-	\label{fig:spring_systems}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=10cm]{imagenes/owlviz.jpg}
+	\includegraphics[width=13cm]{imagenes/owlviz.jpg}
 	\caption{Herramienta Protégé utilizando el plugin OWLViz sobre una ontología en OWL.}
 	\label{fig:owlviz}
 \end{figure}
+
+Los algoritmos de layout que disponen incluyen una distribución en forma de árbol descendiente o lateral. En el caso de OntoGraph también incluye un algoritmo de layout basado en un sistema de resortes (Spring Systems) \cite{kobourov2012spring}[Fig. \ref{fig:spring_systems}]. Este algoritmo funciona de manera similar al de dirigido por fuerzas de Tunkelang \cite{tunkelang1998jiggle}, computando fuerzas de atracción entre los nodos adyacentes y fuerzas de repulsión entre todos los pares de nodos.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=13cm]{imagenes/spring_systems.png}
+	\caption{Ilustración de un sistema de resortes genérico: empezando desde posiciones aleatorias, trata al grafo como un sistema de resortes y busca encontrar una configuración estable \cite{gajer2002grip}.}
+	\label{fig:spring_systems}
+\end{figure}
+
+
 
 % Illustration of a generic spring embedder: starting from random positions, treat the graph as spring
 % system and look for a stable configuration [32].
@@ -87,16 +89,16 @@ Los algoritmos de layout que disponen incluyen una distribución en forma de ár
 % between adjacent vertices and repulsive forces between all pairs of vertices
 
 \section{OWLGrEd}
-OWLGrEd \cite{liepinvs2014owlgred} es una herramienta de visualización de ontologías OWL, la cuál al momento de renderizar el diagrama utiliza algoritmos de layout. Los diagramas en OWLGrEd utilizan un layout Ortogonal \cite{bekos2012smooth}[Fig. \ref{fig:ortogonal}] sobre las relaciones, a excepción de las relaciones de herencia, las cuales las muestra con un layout jerárquico. Las relaciones de herencia fluyen desde un lado del diagrama hacia el lado opuesto, y las demás relaciones fluyen perpendicularmente a estas, como puede verse en la figura \ref{fig:owlgred}. Esto es debido a que las relaciones de herencia típicas de un diagrama OWL tienden a leerse mas fácilmente de izquierda a derecha y guían a un diagrama mas compacto.
+OWLGrEd \cite{liepinvs2014owlgred} es una herramienta de visualización de ontologías OWL, la cuál al momento de renderizar el diagrama utiliza algoritmos de layout. Los diagramas en OWLGrEd utilizan un layout Ortogonal \cite{bekos2012smooth}[Fig. \ref{fig:ortogonal}] sobre las relaciones, a excepción de las relaciones de herencia, las cuales las muestra con un layout jerárquico. Las relaciones de herencia fluyen desde un lado del diagrama hacia el lado opuesto, y las demás relaciones fluyen perpendicularmente a éstas, como puede verse en la Figura \ref{fig:owlgred}. Esto es debido a que las relaciones de herencia típicas de un diagrama OWL tienden a leerse mas fácilmente de izquierda a derecha y guían a un diagrama mas compacto.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm]{imagenes/owlgred.png}
 	\caption{Visualización una ontología OWL en OWLGrEd \cite{liepinvs2014owlgred}.}
 	\label{fig:owlgred}
 \end{figure}
 
-\begin{figure*}[h]
+\begin{figure}[H]
 	\centering
 	\subfigure[]{
 		\includegraphics[width=5cm]{imagenes/ortogonal_1.png}
@@ -108,7 +110,7 @@ OWLGrEd \cite{liepinvs2014owlgred} es una herramienta de visualización de ontol
 	}
 	\caption{Ejemplo de un grafo visualizado con un layout ortogonal y con un estilo de diagrama de arcos \cite{bekos2012smooth}.}
 	\label{fig:ortogonal}
-\end{figure*}
+\end{figure}
 
 % OWLGrEd diagrams use the orthogonal layout where the inheritance-defining
 % relations (i.e. subclass-of relations between classes and instance-of relations
@@ -119,11 +121,11 @@ OWLGrEd \cite{liepinvs2014owlgred} es una herramienta de visualización de ontol
 % readable and the one which leads to more compact diagrams.
 
 \section{VOWL}
-Los grafos son visualizados en VOWL \cite{lohmann2016visualizing}[Fig. \ref{fig:vowl}] utilizando el algoritmo de layout dirigido por fuerzas. Este layout tiene a ordenar los nodos de tal manera que las clases con mas conexiones este ubicadas mas próximas al centro de la visualización, y viceversa las que tienen menos conexiones mas próximas a la periferia. En este sentido, el layout dirigido por fuerzas ayuda a reflejar la importancia relativa de las clases en el grafo que está siendo visualizado, ya que el número de conexiones de una clase es usualmente un indicador de la importancia que esta tiene en la ontología \cite{peroni2008identifying}.
+Los grafos son visualizados en VOWL \cite{lohmann2016visualizing}[Fig. \ref{fig:vowl}] utilizando un algoritmo de layout dirigido por fuerzas. Este layout tiende a ordenar los nodos de tal manera que las clases con más conexiones estén ubicadas más próximas al centro de la visualización, y viceversa, las que tienen menos conexiones más próximas a la periferia. En este sentido, el layout dirigido por fuerzas ayuda a reflejar la importancia relativa de las clases en el grafo que está siendo visualizado, ya que el número de conexiones de una clase es usualmente un indicador de la importancia que ésta tiene en la ontología \cite{peroni2008identifying}.
 
-En VOWL algunos conceptos pueden aparecer multiplicados varias veces como nodos en la visualización del grafo. Esto ayuda a que el layout dirigido por fuerzas no tenga que ser forzado a resolver cruces de arcos complejos, por lo que relaja la visualización y facilita la navegabilidad. Para realizar tal multiplicación, VOWL sigue un conjunto de reglas que determinan que elementos pueden multiplicarse ya sea, para una clase en particular o para el grafo completo.
+En VOWL, algunos conceptos pueden aparecer multiplicados varias veces como nodos en la visualización del grafo. Esto ayuda a que el layout dirigido por fuerzas no tenga que ser forzado a resolver cruces de arcos complejos, por lo que relaja la visualización y facilita la navegabilidad. Para realizar tal multiplicación, VOWL sigue un conjunto de reglas que determinan qué elementos pueden multiplicarse ya sea, para una clase en particular o para el grafo completo.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=13cm]{imagenes/vowl.png}
 	\caption{Interfaz de VOWL que permite visualizar una ontología y posee una barra de herramientas para configurar algunas preferencias. \cite{lohmann2016visualizing}.}
@@ -158,8 +160,15 @@ En VOWL algunos conceptos pueden aparecer multiplicados varias veces como nodos 
 \section{Análisis y Comparación}
 El tipo de algoritmos de layout que utilizan OntoGraph, OWLViz, SOVA y OWLGrEd son útiles para grafos planares o de tipo árbol, por lo general para representaciones de ontologías OWL que presentan una jerarquía muy estricta entre sus elementos. Debido a esto, no consideran propiedades de dibujado como el crossing number u optimización de área, si no que se realizan teniendo en cuenta un criterio fijo y estático de organización, debido a que la forma de los grafos siempre será análoga.
 
-En el caso particular de VOWL, este utiliza el algoritmo dirigido por fuerzas, pero nuevamente aprovecha el lenguaje de la representación a su favor, ya que para evitar problemas de cruzamientos multiplica los nodos que generan arcos que rompen la estructura de árbol jerárquica y los coloca en cada nodo como un hijo.
+En el caso particular de VOWL, éste utiliza el algoritmo dirigido por fuerzas, pero nuevamente aprovecha el lenguaje de la representación a su favor, ya que para evitar problemas de cruzamientos multiplica los nodos que generan arcos que rompen la estructura de árbol jerárquica y los coloca en cada nodo como un hijo.
 
-Estos algoritmos cuando queremos aplicarlos sobre modelos conceptuales comienzan a tener complicaciones, debido a la gran variedad de formas que puede tener un grafo para visualizar un diagrama en algún lenguaje de modelado conceptual. En este sentido, se buscaron otro tipo de técnicas mas generales para trabajar sobre layout de grafos, como son las de TimGA y Hongmei He, las cuales atacan el objetivo desde el problema de crossing number, pero sus resultados en la practica tienen complicaciones de eficiencia.
+Al aplicar estos algoritmos sobre modelos conceptuales comienzan a tener complicaciones, debido a la gran variedad de formas que puede tener un grafo para visualizar un diagrama en algún lenguaje de modelado conceptual. 
 
-En conclusión, un punto medio entre estas técnicas es lo que se intenta resolver para alcanzar un algoritmo de layout mas óptimo para utilizar sobre diagramas de modelado conceptual.
+En este sentido, se buscaron otro tipo de técnicas más generales para trabajar sobre layout de grafos, como son las de TimGA y Hongmei He, las cuales atacan el objetivo desde el problema de crossing number, pero sus resultados en la práctica tienen complicaciones de eficiencia.
+
+El algoritmo desarrollado ArcGen se basa en las técnicas de TimGA y Hongmei He.% Utiliza una representación de Diagrama de Arcos para sus individuos como Hongmei He y realiza un ciclo de generaciones y mutaciones similar al de TimGA. 
+La diferencia más importante es el preprocesado del grafo semilla, al cual se le aplica un algoritmo previo, denominado algoritmo para grafos completos, lo que permite guiar el resultado más rápidamente hacia un mínimo local y, por lo tanto, disminuye drásticamente el tiempo de ejecución del algoritmo genético. 
+
+El resultado de ArcGen no dispone de una visualización genérica del grafo, por lo que para su utilización en la práctica es necesaria su integración con otros algoritmos de layout, como el algoritmo de fuerzas o el ortogonal.
+
+En conclusión, un punto intermedio entre estas técnicas es lo que se intenta resolver para alcanzar un algoritmo de layout  óptimo, que se ajuste a  diagramas de modelado conceptual.

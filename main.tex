@@ -16,13 +16,13 @@
 \usepackage{scalerel}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{longtable} % para tablas largas
+\usepackage{enumerate}
 
 %paquetes extras
 \usepackage{subfigure}
 \usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{subfigure}
 \usepackage{changepage}   % for the adjustwidth environment
 \usepackage{tikz}
 \usetikzlibrary{arrows}
@@ -72,6 +72,7 @@ bordercolor=blue]{todonotes}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \newtheorem{definition}{{\bf Definición }}[section]
+\newtheorem{ejemplo}{{\bf Ejemplo }}[section]
 \newtheorem{theorem}{\bf Teorema}[section]
 \newtheorem{property}{\bf Propiedad}[section]
 %  Definición de Palabras Clave
@@ -87,12 +88,14 @@ bordercolor=blue]{todonotes}
 \hyphenation{in-te-rac-tuar re-pre-sen-ta-cion}
 \hyphenation{do-mi-nios ra-zo-na-dor de-sa-rro-lla}
 
+
+
 \begin{document}
 
 \renewcommand{\tablename}{Tabla}
 \renewcommand{\listtablename}{Indice de tablas}
 
-%Empieza la numeracion en nmeros romanos
+%Empieza la numeracion en números romanos
 \frontmatter
 % Incluimos la cartula
 \input{caratula}

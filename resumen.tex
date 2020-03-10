@@ -9,13 +9,13 @@
 
 \ \\
 \ \\
-Los algoritmos de layout automático son una herramienta de gran utilidad para el diseño de modelos conceptuales, diagramas o grafos, en cualquier lenguaje de modelado como UML, ER, ORM, entre otros. En este sentido, para lograr un algoritmo de layout es necesario estudiar varias características de lo que conforma un layout correctamente visualizado. Hemos considerado de mayor importancia, entre estas características, que el grafo (diagrama) resultante posea una mínima cantidad de cruzamientos entre sus arcos. Este problema se conoce como Crossing Number, y es NP-Completo. 
+Los algoritmos de layout automático son una herramienta de gran utilidad para el diseño de modelos conceptuales, diagramas o grafos, en cualquier lenguaje de modelado como UML, ER, ORM, entre otros. En este sentido, para lograr un algoritmo de layout es necesario estudiar varias características que conforman un layout correctamente visualizado. Hemos considerado de mayor importancia, entre estas características, que el grafo (diagrama) resultante posea una mínima cantidad de cruzamientos entre sus arcos. Este problema se conoce como Crossing Number, y es NP-Completo. 
 
-En este trabajo se introduce el diseño y la implementación de  {\sc ArcGen}, un nuevo algoritmo genético,  que minimiza la cantidad de cruces de un grafo. {\sc ArcGen} involucra  un preprocesamiento del  grafo  original,  transformando su representación gráfica a un Diagrama de Arcos. Se describen todos los detalles del diseño y de la  implementación con la que se testeó el  algoritmo.  
+En este trabajo se introduce el diseño y la implementación de  {\sc ArcGen}, un nuevo algoritmo genético,  que minimiza la cantidad de cruces de un grafo. {\sc ArcGen} involucra  un preprocesamiento del  grafo  original,  transformando su representación gráfica a un Diagrama de Arcos. Se describen todos los detalles del diseño y de la  implementación con la que se validó el algoritmo.  
 
-Finalmente, dada la  motivación del desarrollo de  {\sc ArcGen} y la complejidad temporal del problema Crossing Number se realizaron experimentos, circunscriptos a grafos de tamaño proporcional al de los diagramas que se generan en la práctica real de modelado conceptual. 
+Finalmente, dada la  motivación del desarrollo de  {\sc ArcGen} y la complejidad temporal del problema Crossing Number, se realizaron experimentos circunscritos a grafos de tamaño proporcional al de los diagramas que se generan en la práctica real de modelado conceptual. 
 
-Se presentan los resultados de estos experimentos, mostrando que el algoritmo reduce el número de cruces sobre el grafo original en hasta cuatro veces. Se muestra también la integración de tal algoritmo con otros algoritmos de layout como el algoritmo Dirigido por Fuerzas de Tunkelang que permite dar una visualización diferente sobre el grafo, y se evalúan y comparan los resultados en conjunto y por separado de estos.
+Se presentan los resultados de estos experimentos, mostrando que el algoritmo reduce el número de cruces sobre el grafo original en hasta cuatro veces. Se muestra también la integración de tal algoritmo con otros de layout, como el algoritmo Dirigido por Fuerzas de Tunkelang que permite dar una visualización diferente sobre el grafo. Finalmente, se evalúan y comparan los resultados en conjunto e individualmente.
 
 \vfill
 \pagebreak
